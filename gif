@@ -1,0 +1,18 @@
+#!/bin/bash
+
+############################################################################
+#Script Name	:   Git Ignore Find
+#Description	:   Finds presets for .gitignore file
+#Args           :   Technology or framework keyword (e.g. xcode, python, java)
+#Author       	:   Antonio Pantaleo
+#Email         	:   antonio_pantaleo@icloud.com
+############################################################################
+
+if [ $# -eq 0 ]; then
+    echo "🤨 Please provide an input"
+    exit
+fi
+
+URL="https://www.toptal.com/developers/gitignore/api/list"
+RES=$(curl -s $URL | grep -ioe "\w*$1\w*" --color=always )
+echo $RES
